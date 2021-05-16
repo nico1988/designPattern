@@ -1,9 +1,12 @@
 package com.nico;
 
+import com.nico.momento.Editor;
+import com.nico.momento.History;
+
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	    // write your code here
         System.out.println("hi");
         User user = new User("nico");
         System.out.println(user.name);
@@ -22,14 +25,25 @@ public class Main {
         var textBox = new TextBox();
         textBox.enable();
         // polymorphism
-        drawUICntrol(new TextBox());
-        drawUICntrol(new CheckBox());
+        drawUIControl(new TextBox());
+        drawUIControl(new CheckBox());
+        // momento pattern
+        var editor = new Editor();
+        var history = new History();
+        editor.setContent("a");
+        history.push(editor.createState());
+        editor.setContent("b");
+        history.push(editor.createState());
+        editor.setContent("c");
+        editor.restore(history.pop());
+        System.out.println(editor.getContent());
 
     }
     public static TaxCalculator getCalculator() {
         return new Calculator2020();
     }
-    public static void drawUICntrol(UIControl control) {
+    public static void drawUIControl(UIControl control) {
         control.draw();
     }
+
 }
