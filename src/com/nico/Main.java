@@ -21,8 +21,15 @@ public class Main {
         // inheritance
         var textBox = new TextBox();
         textBox.enable();
+        // polymorphism
+        drawUICntrol(new TextBox());
+        drawUICntrol(new CheckBox());
+
     }
     public static TaxCalculator getCalculator() {
         return new Calculator2020();
+    }
+    public static void drawUICntrol(UIControl control) {
+        control.draw();
     }
 }
