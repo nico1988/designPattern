@@ -18,6 +18,9 @@ public class Main {
         // Abstraction
         MailService mailService = new MailService();
         mailService.sendEmail();
+        // inheritance
+        var textBox = new TextBox();
+        textBox.enable();
     }
     public static TaxCalculator getCalculator() {
         return new Calculator2020();
